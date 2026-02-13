@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Çiçekli Kedi Oyunu 🐱🌸</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffd6e7,#fff);
+    font-family:Arial, sans-serif;
+    text-align:center;
+    overflow:hidden;
+}
+
+.container{
+    position:relative;
+}
+
+.cat{
+    font-size:120px;
+    margin-bottom:20px;
+}
+
+h1{
+    color:#ff4f81;
+}
+
+.buttons{
+    margin-top:20px;
+}
+
+button{
+    padding:15px 30px;
+    margin:10px;
+    font-size:20px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+#yes{
+    background:#ff4f81;
+    color:white;
+}
+
+#no{
+    background:#ff85a2;
+    color:white;
+}
+
+.flower{
+    font-size:80px;
+    position:absolute;
+    right:-100px;
+    top:40px;
+    opacity:0;
+    transform:translateX(-40px);
+    transition:1s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.hidden{
+    display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="cat" id="cat">🐱</div>
+    <h1 id="question">Hiç çiçek aldın mı? 🌸</h1>
+
+    <div class="buttons" id="buttons">
+        <button id="yes" onclick="yesClick()">Evet</button>
+        <button id="no" onclick="noClick()">Hayır</button>
+    </div>
+
+    <div class="flower" id="flower">🌸</div>
+
+</div>
+
+<script>
+let yesSize = 20;
+let noSize = 20;
+
+function yesClick(){
+    yesSize -= 2;
+    noSize += 4;
+
+    if(yesSize < 8){
+        yesSize = 8;
+    }
+
+    document.getElementById("yes").style.fontSize = yesSize + "px";
+    document.getElementById("no").style.fontSize = noSize + "px";
+}
+
+function noClick(){
+    document.getElementById("question").innerHTML = "O zaman bu çiçek senin için 🌸";
+    document.getElementById("buttons").classList.add("hidden");
+
+    setTimeout(function(){
+        document.getElementById("flower").classList.add("show");
+    },500);
+}
+</script>
+
+</body>
+</html>
